@@ -1,4 +1,4 @@
-#include "mavros_publisher.h"
+#include "mavros_communicator.h"
 
 ros::Publisher pub;
 void publisher(int channel, int pwm) {
