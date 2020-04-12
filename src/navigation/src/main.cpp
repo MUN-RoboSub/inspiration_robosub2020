@@ -1,5 +1,6 @@
 #include "ros/ros.h"
 #include "mavros_publisher.h"
+#include "yaw.h"
 
 extern ros::Publisher pub; 
 int main(int argc, char **argv) {
@@ -12,7 +13,8 @@ int main(int argc, char **argv) {
 
   while(ros::ok()){
     /* set the pwm value of the yaw channel to 1900 */
-    publisher(4, 1900);
+    // publisher(4, 1900);
+    yaw();
     
     ros::spinOnce();
     loop_rate.sleep();
