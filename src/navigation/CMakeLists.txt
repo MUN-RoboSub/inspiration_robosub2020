@@ -208,6 +208,6 @@ include_directories(
 
 include_directories(include/${PROJECT_NAME})
 
-add_executable(main src/main.cpp src/mavros_publisher.cpp src/yaw.cpp)
+add_executable(main src/main.cpp src/mavros_publisher.cpp src/examples/yaw.cpp)
 target_link_libraries(main ${catkin_LIBRARIES})
 add_dependencies(main navigation_generate_messages_cpp)
