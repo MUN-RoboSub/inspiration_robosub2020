@@ -1,9 +1,9 @@
 #include "mavros_communicator.h"
+#include "main.h"
 
-ros::Publisher pub;
 void publisher(int channel, int pwm) {
   mavros_msgs::OverrideRCIn msg;
   msg.channels[channel-1] = pwm;
 
-  pub.publish(msg);
+  rc_pub.publish(msg);
 }
