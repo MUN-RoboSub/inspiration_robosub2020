@@ -3,7 +3,6 @@
 
 #include "navigation/CVarray.h"
 #include "mavros_communicator.h"
-#include "yaw.h"
 #include "rccv.h"
 
 // declare publishers and subscribers
