@@ -2,7 +2,7 @@
 #include <vector>
 
 #include "messages.h"
-#include "mavros_communicator.h"
+#include "rc_communicator.h"
 #include "rccv.h"
 
 // declare publishers and subscribers

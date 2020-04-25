@@ -208,6 +208,6 @@ include_directories(
 
 include_directories(include/${PROJECT_NAME})
 
-add_executable(main src/main.cpp src/mavros_communicator.cpp src/examples/yaw.cpp src/examples/rccv.cpp)
+add_executable(main src/main.cpp src/rc_communicator.cpp src/examples/yaw.cpp src/examples/rccv.cpp)
 target_link_libraries(main ${catkin_LIBRARIES})
 add_dependencies(main navigation_generate_messages_cpp)
