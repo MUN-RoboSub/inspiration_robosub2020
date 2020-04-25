@@ -12,6 +12,6 @@
 
 void rc_if_cv(int channel, int pwm) {
   if(!finalgateCoords.empty()){
-    publisher(4, 1900);
+    rc_raw(channel, pwm);
   }
 }
