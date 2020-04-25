@@ -1,19 +1,24 @@
 #include "ros/ros.h"
 #include <vector>
 
-#include "navigation/CVarray.h"
+#include "messages.h"
 #include "mavros_communicator.h"
 #include "rccv.h"
 
 // declare publishers and subscribers
 ros::Publisher rc_pub; 
 ros::Subscriber finalgate_sub;
+ros::Subscriber compassHdg_sub;
 
 // global variables
 std::vector<long int> finalgateCoords;
+float compassHdg;
 
 void finalgateCallback(const navigation::CVarray::ConstPtr& msg){
   finalgateCoords = msg->array;
+}
+void headingCallback(const std_msgs::Float64::ConstPtr& msg){
+  compassHdg = msg->data;
 }
 
 int main(int argc, char **argv){
@@ -28,10 +33,11 @@ int main(int argc, char **argv){
   // define publishers and subscribers
   rc_pub = n.advertise<mavros_msgs::OverrideRCIn>("/mavros/rc/override", 1000);
   finalgate_sub = n.subscribe("finalgate_cv", 1000, finalgateCallback);
+  compassHdg_sub = n.subscribe("/mavros/global_position/compass_hdg", 1000, headingCallback);
   
   ros::Rate loop_rate(10);
   while(ros::ok()){
-    rc_if_cv(4, 1900);
+    rc(THROTTLE_CHNL, -1);
     loop_rate.sleep();
   }
   

@@ -4,5 +4,6 @@
 extern ros::Publisher rc_pub;
 
 extern std::vector<long int> finalgateCoords;
+extern float compassHdg;
 
 #endif
