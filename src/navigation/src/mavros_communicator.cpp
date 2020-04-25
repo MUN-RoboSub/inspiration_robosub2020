@@ -2,12 +2,17 @@
 #include "main.h"
 
 /*
-  "Low-level" communication functions (publishing rc commands, getting IMU data, etc).
+  RC-publishing functions
  */
 
-void publisher(int channel, int pwm) {
+void rc_raw(int channel, int pwm) {
   mavros_msgs::OverrideRCIn msg;
-  msg.channels[channel-1] = pwm;
+  msg.channels[channel] = pwm;
+  rc_pub.publish(msg);
+}
 
+void rc(int channel, int speed){
+  mavros_msgs::OverrideRCIn msg;
+  msg.channels[channel] = 1500 + (speed*400); // pwm 1100 is lowest, pwm 1900 is highest
   rc_pub.publish(msg);
 }
