@@ -20,16 +20,27 @@ In order to run this software on a computer/AUV, follow the steps below (this as
 
 ### Building and running the program
 1. Build and install the program
+
    ```catkin_make install```
+
 2. Source the setup file
+
    ```source devel/setup.bash```
+
 3. Start roscore
+
    ```roscore```
+
 4. Start MAVROS. Note: if you are using SITL, you will have to add the address of the simulated vehicle, ex: "fcu_url:=0.0.0.0:14550"
+
    ```roslaunch mavros apm.launch```
+
 5. **(optional)** Arm the vehicle if you aren't doing so within the program
+
    ```rosrun mavros mavsafety arm```
+
 6. Run the program
+
    ```rosrun navigation main```
 
 ### Additional notes
