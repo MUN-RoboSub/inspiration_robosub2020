@@ -11,8 +11,8 @@ void rc_raw(int channel, int pwm) {
   rc_pub.publish(msg);
 }
 
-void rc(int channel, int speed){
+void rc(int channel, float speed){
   mavros_msgs::OverrideRCIn msg;
-  msg.channels[channel] = 1500 + (speed*400); // pwm 1100 is lowest, pwm 1900 is highest
+  msg.channels[channel] = 1500.0 + (speed*400.0); // pwm 1100 is lowest, pwm 1900 is highest
   rc_pub.publish(msg);
 }

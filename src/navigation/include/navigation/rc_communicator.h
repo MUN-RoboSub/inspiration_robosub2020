@@ -5,7 +5,7 @@
 #include "mavros_msgs/OverrideRCIn.h"
 
 void rc_raw(int channel, int pwm);
-void rc(int channel, int pwm);
+void rc(int channel, float pwm);
 enum RCCHANNEL {
   PITCH_CHNL,
   ROLL_CHNL,
