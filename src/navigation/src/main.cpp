@@ -1,25 +1,8 @@
 #include "ros/ros.h"
-#include <vector>
 
-#include "messages.h"
+#include "init.h"
 #include "rc_communicator.h"
-#include "rccv.h"
-
-// declare publishers and subscribers
-ros::Publisher rc_pub; 
-ros::Subscriber finalgate_sub;
-ros::Subscriber compassHdg_sub;
-
-// global variables
-std::vector<long int> finalgateCoords;
-float compassHdg;
-
-void finalgateCallback(const navigation::CVarray::ConstPtr& msg){
-  finalgateCoords = msg->array;
-}
-void headingCallback(const std_msgs::Float64::ConstPtr& msg){
-  compassHdg = msg->data;
-}
+#include "global_data.h"
 
 int main(int argc, char **argv){
   //initialize the node
@@ -29,17 +12,23 @@ int main(int argc, char **argv){
   // async spinner to update subscribers
   ros::AsyncSpinner spinner(4);
   spinner.start();
-  
-  // define publishers and subscribers
-  rc_pub = n.advertise<mavros_msgs::OverrideRCIn>("/mavros/rc/override", 1000);
-  finalgate_sub = n.subscribe("finalgate_cv", 1000, finalgateCallback);
-  compassHdg_sub = n.subscribe("/mavros/global_position/compass_hdg", 1000, headingCallback);
-  
+
+  // initialize and arm
+  initSubs(&n);
+  initPubs(&n);
+  initSrv(&n);
+  arm();
+
+  // sleep so that the spinner has time to update the data values
+  sleep(5);
+
   ros::Rate loop_rate(10);
   while(ros::ok()){
-    rc(THROTTLE_CHNL, -1);
+    rc(YAW_CHNL, 1);
+    ROS_INFO("heading %f", compassHdg);
     loop_rate.sleep();
   }
   
+  disarm();
   return 0;
 }

@@ -1,5 +1,5 @@
 #include "rc_communicator.h"
-#include "main.h"
+#include "global_data.h"
 #include "rccv.h"
 
 /*
