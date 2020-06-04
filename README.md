@@ -1,7 +1,7 @@
 # inspiration_robosub2020
 
 ## About
-This is [Team Inspiration](https://team11128.wixsite.com/main)'s repository for the (now-cancelled) 2020 [RoboSub](https://robonation.org/programs/robosub/) season.
+This is [Team Inspiration](https://team11128.wixsite.com/main)'s repository for the (now-virtual) 2020 [RoboSub](https://robonation.org/programs/robosub/) season.
 
 ## Setup and Dependencies
 The AUV's software has been split into two primary packages:
