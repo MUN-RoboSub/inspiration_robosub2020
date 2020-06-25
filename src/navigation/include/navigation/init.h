@@ -3,6 +3,7 @@
 #include "ros/ros.h"
 
 void initSubs(ros::NodeHandle *n);
+void initSimSubs(ros::NodeHandle *n);
 void initPubs(ros::NodeHandle *n);
 void initSrv(ros::NodeHandle *n);
 

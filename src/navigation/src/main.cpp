@@ -15,6 +15,7 @@ int main(int argc, char **argv){
 
   // initialize and arm
   initSubs(&n);
+  initSimSubs(&n);
   initPubs(&n);
   initSrv(&n);
   arm();
@@ -24,9 +25,9 @@ int main(int argc, char **argv){
 
   ros::Rate loop_rate(10);
   while(ros::ok()){
-    rc(YAW_CHNL, 1);
-    ROS_INFO("heading %f", compassHdg);
-    loop_rate.sleep();
+      //rc(FORWARD_CHNL, 1);
+      ROS_INFO("x: %f", gazeboTwist.linear.x);
+      loop_rate.sleep();
   }
   
   disarm();

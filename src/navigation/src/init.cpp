@@ -10,6 +10,10 @@ void initSubs(ros::NodeHandle *n){
   compassHdg_sub = n->subscribe("/mavros/global_position/compass_hdg", 1000, headingCallback);
 }
 
+void initSimSubs(ros::NodeHandle *n){
+  gazeboTwist_sub = n->subscribe("/gazebo/model_states", 1000, gazeboTwistCallback);
+}
+
 void initPubs(ros::NodeHandle *n){
   rc_pub = n->advertise<mavros_msgs::OverrideRCIn>("/mavros/rc/override", 1000);
 }
