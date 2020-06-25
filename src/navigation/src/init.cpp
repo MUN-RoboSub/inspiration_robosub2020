@@ -11,7 +11,7 @@ void initSubs(ros::NodeHandle *n){
 }
 
 void initSimSubs(ros::NodeHandle *n){
-  gazeboTwist_sub = n->subscribe("/gazebo/model_states", 1000, gazeboTwistCallback);
+  gazeboModelStates_sub = n->subscribe("/gazebo/model_states", 1000, gazeboModelStatesCallback);
 }
 
 void initPubs(ros::NodeHandle *n){

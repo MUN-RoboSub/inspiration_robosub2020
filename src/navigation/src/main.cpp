@@ -26,7 +26,7 @@ int main(int argc, char **argv){
   ros::Rate loop_rate(10);
   while(ros::ok()){
       //rc(FORWARD_CHNL, 1);
-      ROS_INFO("x: %f", gazeboTwist.linear.x);
+      ROS_INFO("x: %f", gazeboPose.position.x);
       loop_rate.sleep();
   }
   
