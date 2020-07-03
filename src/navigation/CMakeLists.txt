@@ -209,5 +209,9 @@ include_directories(
 include_directories(include/control)
 
 add_executable(control control/main.cpp control/rc_communicator.cpp control/examples/yaw.cpp control/examples/rccv.cpp control/global_data.cpp control/init.cpp control/publishers.cpp control/srv.cpp control/subscribers.cpp)
-target_link_libraries(main ${catkin_LIBRARIES})
-add_dependencies(main navigation_generate_messages_cpp)
+target_link_libraries(control ${catkin_LIBRARIES})
+add_dependencies(control navigation_generate_messages_cpp)
+
+add_executable(position_compute position_compute/main.cpp)
+target_link_libraries(position_compute ${catkin_LIBRARIES})
+add_dependencies(position_compute navigation_generate_messages_cpp)
