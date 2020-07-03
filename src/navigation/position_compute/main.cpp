@@ -53,9 +53,7 @@ int main(int argc, char **argv)
     float initialPoseX = gazeboPose.position.x;
     float initialPoseY = gazeboPose.position.y;
     float initialPoseZ = gazeboPose.position.z;
-    
-    // sleep(3);
-    
+        
     ros::Rate loop_rate(1000); // velocity sample rate
     while(ros::ok()){
 	
@@ -83,7 +81,11 @@ int main(int argc, char **argv)
 	    noSampleCntZ;
 	}
 	
-	ROS_INFO("\ncalculated displacement -- x: %f | y: %f | z: %f \nactual displacement -- x: %f | y: %f | z: %f \ndisplacement error -- x: %f, | y: %f | z: %f \ninitial position -- x: %f | y: %f | z: %f \ncurrent position -- x: %f | y: %f | z: %f", integratedX, integratedY, integratedZ, (gazeboPose.position.x - initialPoseX), (gazeboPose.position.y - initialPoseY), (gazeboPose.position.z - initialPoseZ), ((gazeboPose.position.x - initialPoseX) - integratedX), ((gazeboPose.position.y - initialPoseY) - integratedY), ((gazeboPose.position.z - initialPoseZ) - integratedZ), initialPoseX, initialPoseY, initialPoseZ, gazeboPose.position.x, gazeboPose.position.y, gazeboPose.position.z);
+	ROS_INFO("\ncalculated displacement -- x: %f | y: %f | z: %f \nactual displacement -- x: %f | y: %f | z: %f \ndisplacement error -- x: %f, | y: %f | z: %f \ninitial position -- x: %f | y: %f | z: %f \ncurrent position -- x: %f | y: %f | z: %f", integratedX, integratedY, integratedZ,
+		 (gazeboPose.position.x - initialPoseX), (gazeboPose.position.y - initialPoseY), (gazeboPose.position.z - initialPoseZ),
+		 ((gazeboPose.position.x - initialPoseX) - integratedX), ((gazeboPose.position.y - initialPoseY) - integratedY), ((gazeboPose.position.z - initialPoseZ) - integratedZ),
+		 initialPoseX, initialPoseY, initialPoseZ,
+		 gazeboPose.position.x, gazeboPose.position.y, gazeboPose.position.z);
 
         velocity.x = 10; // impossible value
 	velocity.y = 10;
