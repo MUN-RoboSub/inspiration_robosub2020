@@ -206,8 +206,8 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-include_directories(include/${PROJECT_NAME})
+include_directories(include/control)
 
-add_executable(main src/main.cpp src/rc_communicator.cpp src/examples/yaw.cpp src/examples/rccv.cpp src/global_data.cpp src/init.cpp src/publishers.cpp src/srv.cpp src/subscribers.cpp)
+add_executable(control control/main.cpp control/rc_communicator.cpp control/examples/yaw.cpp control/examples/rccv.cpp control/global_data.cpp control/init.cpp control/publishers.cpp control/srv.cpp control/subscribers.cpp)
 target_link_libraries(main ${catkin_LIBRARIES})
 add_dependencies(main navigation_generate_messages_cpp)
