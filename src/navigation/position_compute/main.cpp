@@ -32,7 +32,7 @@ void modelStatesCallback(const gazebo_msgs::ModelStates::ConstPtr& msg){
 int main(int argc, char **argv)
 {
 
-    ros::init(argc, argv, "listener");
+    ros::init(argc, argv, "position_compute");
     ros::NodeHandle n;
 
     ros::Subscriber modelStatesSub = n.subscribe("/gazebo/model_states", 1000, modelStatesCallback);
@@ -78,10 +78,10 @@ int main(int argc, char **argv)
 	    ++noSampleCntZ;
 	} else {
 	    integratedZ += ((velocity.z * 0.001) * (noSampleCntZ + 1));
-	    noSampleCntZ;
+	    noSampleCntZ = 0;
 	}
 	
-	ROS_INFO("\ncalculated displacement -- x: %f | y: %f | z: %f \nactual displacement -- x: %f | y: %f | z: %f \ndisplacement error -- x: %f, | y: %f | z: %f \ninitial position -- x: %f | y: %f | z: %f \ncurrent position -- x: %f | y: %f | z: %f", integratedX, integratedY, integratedZ,
+	ROS_INFO("\ncalculated displacement -- x: %f | y: %f | z: %f \nactual displacement -- x: %f | y: %f | z: %f \ndisplacement error -- x: %f | y: %f | z: %f \ninitial position -- x: %f | y: %f | z: %f \ncurrent position -- x: %f | y: %f | z: %f", integratedX, integratedY, integratedZ,
 		 (gazeboPose.position.x - initialPoseX), (gazeboPose.position.y - initialPoseY), (gazeboPose.position.z - initialPoseZ),
 		 ((gazeboPose.position.x - initialPoseX) - integratedX), ((gazeboPose.position.y - initialPoseY) - integratedY), ((gazeboPose.position.z - initialPoseZ) - integratedZ),
 		 initialPoseX, initialPoseY, initialPoseZ,
