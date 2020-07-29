@@ -1,6 +1,6 @@
 #include "ros/ros.h"
-#include "subscribers.h"
-#include "global_data.h"
+#include "control/subscribers.h"
+#include "control/global_data.h"
 
 ros::Subscriber finalgate_sub;
 ros::Subscriber compassHdg_sub;

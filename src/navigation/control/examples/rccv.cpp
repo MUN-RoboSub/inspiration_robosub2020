@@ -1,6 +1,6 @@
-#include "rc_communicator.h"
-#include "global_data.h"
-#include "rccv.h"
+#include "control/rc_communicator.h"
+#include "control/global_data.h"
+#include "control/rccv.h"
 
 /*
   This is an example file. It demonstrates how to combine input from computer vision and

@@ -1,5 +1,5 @@
 #include <vector>
-#include "global_data.h"
+#include "control/global_data.h"
 
 std::vector<long int> finalgateCoords;
 float compassHdg;

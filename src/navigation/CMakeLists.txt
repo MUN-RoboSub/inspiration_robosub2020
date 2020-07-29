@@ -52,6 +52,7 @@ find_package(catkin REQUIRED COMPONENTS
  add_message_files(
    FILES
    CVarray.msg
+   floatarray.msg
  )
 
 ## Generate services in the 'srv' folder
@@ -206,7 +207,7 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-include_directories(include/control)
+include_directories(include)
 
 add_executable(control control/main.cpp control/rc_communicator.cpp control/examples/yaw.cpp control/examples/rccv.cpp control/global_data.cpp control/init.cpp control/publishers.cpp control/srv.cpp control/subscribers.cpp)
 target_link_libraries(control ${catkin_LIBRARIES})
@@ -215,3 +216,7 @@ add_dependencies(control navigation_generate_messages_cpp)
 add_executable(position_compute position_compute/main.cpp)
 target_link_libraries(position_compute ${catkin_LIBRARIES})
 add_dependencies(position_compute navigation_generate_messages_cpp)
+
+add_executable(navvoting voting/navvoting/main.cpp voting/navvoting/subscribers.cpp)
+target_link_libraries(navvoting ${catkin_LIBRARIES})
+add_dependencies(navvoting navigation_generate_messages_cpp)

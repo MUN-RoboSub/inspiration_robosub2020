@@ -1,6 +1,6 @@
 #ifndef SUBSCRIBERS_H
 #define SUBSCRIBERS_H
-#include "messages.h"
+#include "control/messages.h"
 
 extern ros::Subscriber finalgate_sub;
 extern ros::Subscriber compassHdg_sub;

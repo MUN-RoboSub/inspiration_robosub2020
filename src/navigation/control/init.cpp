@@ -1,9 +1,9 @@
 #include "ros/ros.h"
-#include "messages.h"
+#include "control/messages.h"
 
-#include "publishers.h"
-#include "subscribers.h"
-#include "srv.h"
+#include "control/publishers.h"
+#include "control/subscribers.h"
+#include "control/srv.h"
 
 void initSubs(ros::NodeHandle *n){
   finalgate_sub = n->subscribe("finalgate_cv", 1000, finalgateCallback);

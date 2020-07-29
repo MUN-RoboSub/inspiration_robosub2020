@@ -1,5 +1,5 @@
-#include "rc_communicator.h"
-#include "yaw.h"
+#include "control/rc_communicator.h"
+#include "control/yaw.h"
 
 /*
   This is an example file. It is a demonstration of how to build navigation functions using rc_communicator
