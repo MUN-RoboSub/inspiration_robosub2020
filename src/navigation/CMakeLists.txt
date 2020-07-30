@@ -209,7 +209,7 @@ include_directories(
 
 include_directories(include)
 
-add_executable(control control/main.cpp control/rc_communicator.cpp control/examples/yaw.cpp control/examples/rccv.cpp control/global_data.cpp control/init.cpp control/publishers.cpp control/srv.cpp control/subscribers.cpp)
+add_executable(control control/main.cpp control/rc_communicator.cpp control/examples/yaw.cpp control/examples/rccv.cpp control/init.cpp control/publishers.cpp control/srv.cpp control/subscribers.cpp)
 target_link_libraries(control ${catkin_LIBRARIES})
 add_dependencies(control navigation_generate_messages_cpp)
 

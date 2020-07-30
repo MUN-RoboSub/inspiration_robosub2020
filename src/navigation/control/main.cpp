@@ -2,7 +2,9 @@
 
 #include "control/init.h"
 #include "control/rc_communicator.h"
-#include "control/global_data.h"
+#include "control/subscribers.h"
+#include "control/publishers.h"
+#include "control/srv.h"
 
 int main(int argc, char **argv){
   //initialize the node

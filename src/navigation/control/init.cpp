@@ -1,29 +1,6 @@
 #include "ros/ros.h"
 #include "control/messages.h"
-
-#include "control/publishers.h"
-#include "control/subscribers.h"
 #include "control/srv.h"
-
-void initSubs(ros::NodeHandle *n){
-  finalgate_sub = n->subscribe("finalgate_cv", 1000, finalgateCallback);
-  compassHdg_sub = n->subscribe("/mavros/global_position/compass_hdg", 1000, headingCallback);
-}
-
-void initSimSubs(ros::NodeHandle *n){
-  gazeboModelStates_sub = n->subscribe("/gazebo/model_states", 1000, gazeboModelStatesCallback);
-}
-
-void initPubs(ros::NodeHandle *n){
-  rc_pub = n->advertise<mavros_msgs::OverrideRCIn>("/mavros/rc/override", 1000);
-}
-
-void initSrv(ros::NodeHandle *n){
-  arming_client = n->serviceClient<mavros_msgs::CommandBool>
-    ("mavros/cmd/arming");
-  mode_client = n->serviceClient<mavros_msgs::SetMode>
-    ("mavros/set_mode");
-}
 
 void arm(){
   mavros_msgs::CommandBool arm_cmd;

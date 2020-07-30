@@ -1,5 +1,5 @@
 #include "control/rc_communicator.h"
-#include "control/global_data.h"
+#include "control/subscribers.h"
 #include "control/rccv.h"
 
 /*
