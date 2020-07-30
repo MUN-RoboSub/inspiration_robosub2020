@@ -1,0 +1,120 @@
+bool x_align_gate (str object, float x_margin_low, float x_margin_high){
+	if (object.get(x) < x_margin_low || object.get(x) > x_margin_high){
+		if (object.get(x) < x_margin_low){
+			left(1 inch);
+		}
+		if (object.get(x) > x_margin_high){
+			left(1 inch);
+		}
+		return (false);
+	}
+	else {
+		return (true);
+	}
+
+} 
+
+bool y_align_gate (str object, float y_margin_low, float y_margin_high){
+	if (object.get(y) < y_margin_low || object.get(y) > y_margin_high){
+			if (object.get(y) < y_margin_low){
+				BACK(1 inch);
+			}
+			if (object.get(y) > y_margin_high){
+				FORWARD(1 inch);
+		}
+		return (false);
+	}
+	else {
+		return (true);
+	}
+
+}
+
+bool z_align_gate (str object, float z_margin_low, float z_margin_high){
+	if (object.get(z) < z_margin_low || object.get(z) > z_margin_high){
+		if (object.get(z) < z_margin_low){
+			THROTTLE_DOWN(1 inch);
+		}
+		if (object.get(z) > z_margin_high){
+			THROTTLE UP(1 inch);
+		}
+		return (false);
+	}
+	else {
+		return (true);
+	}
+
+}
+
+bool pan_align_gate (str object, float pan_margin_low, float pan_margin_high){
+	if (object.get(pan) < pan_margin_low || object.get(pan) > pan_margin_high){
+		if (object.get(pan) < pan_margin_low){
+			YAW_CW(1 degree);
+		}
+		if (object.get(pan) > pan_margin_high){
+			YAW_CCW(3 degree);
+		}
+		return (false);
+	}
+	else {
+		return (true);
+	}
+
+
+}
+
+
+void center_align(str object, float dist_margin_low, float dist_margin_high){
+	align = true
+	while (align == true){
+		c3 = pan_align_gate(object, 30, 60);
+		c1 = x_align_gate(object, 2, 2);
+		c2 = y_align_gate(object, dist_margin_low, dist_margin_high);
+		c4 = z_align_gate(object, 2, 2);
+		sleep(0.1);
+		if (c1 && c2 && c3 && c4) {
+			break;
+		}
+	}
+}
+
+
+//Gate
+
+if (gate_is_visible){
+
+	center_align(“gate”, 15, 17);
+
+	if (target_visible){
+	
+	center_align(“bootlegger”, 10, 9);
+	forward (bootlegger.get(y) + 5ft);
+		
+	}
+	else {     //failsafe
+		center_align(“gate_left_leg”, 30, 30);
+		forward(gate_left_leg.get(y) + 5 ft);
+	}
+	
+}
+
+
+//buoy
+
+if (buoy_is visible){
+
+	center_align(“buoy”, 100, 100);
+	
+	if (target_visible){
+		
+		center_align(Tommy Gun”, 30, 30);
+		forward(tommy_gun.get(y) + 30);
+	}		
+	else {
+		lateral(buoy_right_edge.get(x) + 5 ft);
+		forward(buoy.get(y) * 2);
+		lateral(return to pos);
+		yaw(180);
+		forward(buoy.get(y) + 30);
+	}
+}
