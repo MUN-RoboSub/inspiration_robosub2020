@@ -7,6 +7,7 @@
 void rc_raw(int channel, int pwm);
 void rc(int channel, float pwm);
 void rcTime(int channel, float speed, int seconds);
+void imuTurn(int heading, float speed);
 enum RCCHANNEL {
   PITCH_CHNL,
   ROLL_CHNL,

@@ -1,5 +1,6 @@
 #include "control/rc_communicator.h"
 #include "control/publishers.h"
+#include "control/subscribers.h"
 #include <ctime>
 
 /*
@@ -27,4 +28,24 @@ void rcTime(int channel, float speed, int seconds){
     }
 
     rc(channel, 0);
+}
+
+void imuTurn(int tgtHeading, float speed)
+{
+    // re-implement this later
+    if(tgtHeading > compassHdg) {
+	if ((tgtHeading - compassHdg) > 180)
+	    speed = speed * -1;
+    } else if (tgtHeading < compassHdg) {
+	if ((compassHdg - tgtHeading) < 180)
+	    speed = speed * -1;
+    }
+    
+    while(!(compassHdg < (tgtHeading + 1) && compassHdg > (tgtHeading - 1))) {
+	rc(YAW_CHNL, speed);
+	ROS_INFO("%f", compassHdg);
+	usleep(1000);
+    }
+    ROS_INFO("%f", compassHdg);
+    rc(YAW_CHNL, 0);
 }

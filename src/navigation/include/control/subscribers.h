@@ -15,7 +15,7 @@ void initSubs(ros::NodeHandle *n);
 void initSimSubs(ros::NodeHandle *n);
 
 void finalgateCallback(const navigation::CVarray::ConstPtr& msg);
-void headingCallback(const std_msgs::Float64::ConstPtr& msg);
+void headingCallback(const gazebo_msgs::ModelStates::ConstPtr& msg);
 void gazeboModelStatesCallback(const gazebo_msgs::ModelStates::ConstPtr& msg);
 
 #endif
