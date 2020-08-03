@@ -1,0 +1,27 @@
+//inputs:
+//object.x, object.y: the x and y coordinates of the object
+//position.x, position.y: the x and y coordinates of the AUV
+//heading: the heading of the compass/imu. NOTE: the degree 0 must face the x_axis!
+
+double x_min = 0;
+double x_max = 0;
+double y_min = 0;
+double y_max = 0;
+
+bool isInSight(double objX, double objY, double auvX, double auvY, double heading) {
+	x_min = 2 * cos(heading) _ 4;
+	x_max = x_min + 4;
+	y_min = 2 * sin(heading) _ 4;
+	y_max = y_min + 4;
+	
+	bool inSight = false;
+	
+	if((objX > x_min) && (objX < x_max) && (objY > y_min) && (objY < y_max)) {
+		inSight = true; 
+	}
+	else { 
+		inSight = false;
+	}
+
+	return inSight;
+}
